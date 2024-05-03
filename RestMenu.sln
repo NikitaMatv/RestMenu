@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestMenu", "RestMenu\RestMenu.csproj", "{07B6952B-69B7-43A3-A92B-79E1F88BA9DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestWaiter", "RestWaiter\RestWaiter.csproj", "{0D0D5291-9A84-4B7B-9E32-8400753C4144}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07B6952B-69B7-43A3-A92B-79E1F88BA9DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07B6952B-69B7-43A3-A92B-79E1F88BA9DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07B6952B-69B7-43A3-A92B-79E1F88BA9DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07B6952B-69B7-43A3-A92B-79E1F88BA9DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D0D5291-9A84-4B7B-9E32-8400753C4144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D0D5291-9A84-4B7B-9E32-8400753C4144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D0D5291-9A84-4B7B-9E32-8400753C4144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D0D5291-9A84-4B7B-9E32-8400753C4144}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9B713A8F-9131-49E2-AE87-53DB3C38DD7E}
+	EndGlobalSection
+EndGlobal
