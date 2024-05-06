@@ -26,28 +26,23 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border Background="Transparent" BorderBrush="Black" Width="440" Height="500" BorderThickness="2" CornerRadius="10">
+                    <Border Background="Transparent" BorderBrush="Black" Width="440" Height="380" BorderThickness="2" CornerRadius="10">
+                        <Border.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Выбрать стол" x:Name="BtAdd" Click="BtAdd_Click"></MenuItem>
+                            </ContextMenu>
+                        </Border.ContextMenu>
                         <StackPanel>
                             <Border BorderBrush="Gray" BorderThickness="2"  CornerRadius="20" Width="440" Height="300">
                                 <Image Source="{Binding Images}" Width="440" Height="300" Stretch="Uniform"></Image>
                             </Border>
                             <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left">
-                                <TextBlock Padding="3" FontSize="18" FontWeight="Bold" Text="{Binding Name}"></TextBlock>
+                                <TextBlock Padding="3" FontSize="18" FontWeight="Bold" Text="{Binding Id,StringFormat='Стол номер {0}'}"></TextBlock>
                                 <StackPanel Margin="3" Orientation="Horizontal">
                                     <TextBlock FontSize="12" FontWeight="Bold"  Text="Описание: "></TextBlock>
-                                    <TextBlock  FontSize="14"  TextWrapping="Wrap" Width="370" Text="{Binding Description}"></TextBlock>
-                                </StackPanel>
-                                <StackPanel Margin="3" Orientation="Horizontal">
-                                    <TextBlock FontSize="12" FontWeight="Bold"  Text="Категория: "></TextBlock>
-                                    <TextBlock FontSize="12" Text="{Binding Cotegories.Name}"></TextBlock>
+                                    <TextBlock  FontSize="14"  TextWrapping="Wrap" Width="370" Text="{Binding NumberOfSeats,StringFormat='Стол на {0} гостей'}"></TextBlock>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel  Grid.Row="0" Grid.Column="2" Orientation="Horizontal" Margin="5">
-                                <TextBlock FontSize="18" FontWeight="Bold" Text="Цена: "></TextBlock>
-                                <TextBlock FontSize="18" Text="{Binding Price}"></TextBlock>
-                                <TextBlock FontSize="18" Text=" руб."></TextBlock>
-                            </StackPanel>
-
                         </StackPanel>
                     </Border>
 

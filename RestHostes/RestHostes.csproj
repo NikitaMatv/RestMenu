@@ -126,6 +126,7 @@
     <Compile Include="Components\Order_Meal.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Components\PartialClass\Tables.cs" />
     <Compile Include="Components\Restaurant.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -147,13 +148,14 @@
     <Compile Include="Components\Tables.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Components\Table_Order_Meal.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\CrateOrder_TablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ListTablesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -164,6 +166,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\CrateOrder_TablePage.xaml.cs">
+      <DependentUpon>CrateOrder_TablePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ListTablesPage.xaml.cs">
       <DependentUpon>ListTablesPage.xaml</DependentUpon>
     </Compile>

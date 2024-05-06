@@ -18,10 +18,8 @@ namespace RestHostes.Components
         public Nullable<int> OrderID { get; set; }
         public int ID { get; set; }
         public Nullable<int> Count { get; set; }
-        public Nullable<int> CustomerID { get; set; }
         public Nullable<int> StatusId { get; set; }
     
-        public virtual Customer Customer { get; set; }
         public virtual Meal Meal { get; set; }
         public virtual Order Order { get; set; }
         public virtual Status_Order_Meal Status_Order_Meal { get; set; }

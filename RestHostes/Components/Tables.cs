@@ -21,11 +21,11 @@ namespace RestHostes.Components
         }
     
         public int Id { get; set; }
-        public Nullable<int> RestaurantID { get; set; }
         public Nullable<int> NumberOfSeats { get; set; }
+        public Nullable<int> EmployeeID { get; set; }
     
+        public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
-        public virtual Restaurant Restaurant { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace RestWaiter.Components
         {
             this.Deliverer = new HashSet<Deliverer>();
             this.Delivery = new HashSet<Delivery>();
-            this.Order = new HashSet<Order>();
+            this.Tables = new HashSet<Tables>();
         }
     
         public int ID { get; set; }
@@ -30,7 +30,6 @@ namespace RestWaiter.Components
         public Nullable<int> RoleID { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public Nullable<int> RestaurantID { get; set; }
         public string Email { get; set; }
         public Nullable<bool> IsDismissed { get; set; }
     
@@ -39,8 +38,7 @@ namespace RestWaiter.Components
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Delivery> Delivery { get; set; }
         public virtual EmployeeRole EmployeeRole { get; set; }
-        public virtual Restaurant Restaurant { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
+        public virtual ICollection<Tables> Tables { get; set; }
     }
 }

@@ -14,19 +14,7 @@ namespace RestHostes.Components
     
     public partial class Restaurant
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Restaurant()
-        {
-            this.Employee = new HashSet<Employee>();
-            this.Tables = new HashSet<Tables>();
-        }
-    
         public int ID { get; set; }
         public string Addres { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employee { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tables> Tables { get; set; }
     }
 }

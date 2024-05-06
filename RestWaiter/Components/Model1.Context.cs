@@ -44,7 +44,6 @@ namespace RestWaiter.Components
         public virtual DbSet<Supplier> Supplier { get; set; }
         public virtual DbSet<Supplier_ingridient> Supplier_ingridient { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Table_Order_Meal> Table_Order_Meal { get; set; }
         public virtual DbSet<Tables> Tables { get; set; }
     }
 }

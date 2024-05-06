@@ -17,7 +17,7 @@ namespace RestWaiter.Components
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
-            this.Order_Meal = new HashSet<Order_Meal>();
+            this.Order = new HashSet<Order>();
         }
     
         public int ID { get; set; }
@@ -32,6 +32,6 @@ namespace RestWaiter.Components
         public Nullable<bool> IsDismissed { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order_Meal> Order_Meal { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

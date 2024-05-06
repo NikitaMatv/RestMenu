@@ -90,7 +90,7 @@ namespace RestWaiter.Pages
 
         private void Update()
         {
-            LvTable.ItemsSource = App.DB.Order.Where(x => x.EmployeeID == App.LoggedEmployee.ID && x.DataTimeEnd == null && x.DateTimesSt < DateTime.Now).ToList();
+            LvTable.ItemsSource = App.DB.Order.Where(x => x.Tables.EmployeeID == App.LoggedEmployee.ID  && x.DataTimeEnd == null && x.DateTimesSt < DateTime.Now).ToList();
             LvTable.SelectedIndex = selectind;
             contsOrd = LvTable.SelectedItem as Order;
             LbCart.ItemsSource = App.DB.Order_Meal.Where(x => x.OrderID == contsOrd.ID).ToList();
