@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestMenu", "RestMenu\RestMe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestWaiter", "RestWaiter\RestWaiter.csproj", "{0D0D5291-9A84-4B7B-9E32-8400753C4144}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestHostes", "RestHostes\RestHostes.csproj", "{BA168A4C-D4BD-47A9-A6EC-CD1CE284E8EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0D0D5291-9A84-4B7B-9E32-8400753C4144}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D0D5291-9A84-4B7B-9E32-8400753C4144}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D0D5291-9A84-4B7B-9E32-8400753C4144}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA168A4C-D4BD-47A9-A6EC-CD1CE284E8EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA168A4C-D4BD-47A9-A6EC-CD1CE284E8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA168A4C-D4BD-47A9-A6EC-CD1CE284E8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA168A4C-D4BD-47A9-A6EC-CD1CE284E8EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

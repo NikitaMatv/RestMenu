@@ -1,0 +1,58 @@
+﻿<Page x:Class="RestHostes.Pages.ListTablesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RestHostes.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ListTablesPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="10 0 0 0" Orientation="Horizontal" VerticalAlignment="Center">
+            <Image Margin="20 0 0 0" Source="/Resources/Tables4.png" ToolTip="Стол на 4 гостя" x:Name="BtTable4" MouseDown="BtTable4_MouseDown" />
+            <Image Margin="20 0 0 0" Source="/Resources/Table6.png" ToolTip="Стол на 6 гостей" x:Name="BtTable6" MouseDown="BtTable6_MouseDown"/>
+            <Image Margin="20 0 0 0" Source="/Resources/ThrowOffs.png" ToolTip="Сбросить филтр" x:Name="BtAll" MouseDown="BtAll_MouseDown"/>
+        </StackPanel>
+        <ListBox VerticalAlignment="Top" x:Name="LbTable" Grid.Row="1" HorizontalContentAlignment="Stretch" AlternationCount="2" Height="587">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" Width="910"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="Transparent" BorderBrush="Black" Width="440" Height="500" BorderThickness="2" CornerRadius="10">
+                        <StackPanel>
+                            <Border BorderBrush="Gray" BorderThickness="2"  CornerRadius="20" Width="440" Height="300">
+                                <Image Source="{Binding Images}" Width="440" Height="300" Stretch="Uniform"></Image>
+                            </Border>
+                            <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left">
+                                <TextBlock Padding="3" FontSize="18" FontWeight="Bold" Text="{Binding Name}"></TextBlock>
+                                <StackPanel Margin="3" Orientation="Horizontal">
+                                    <TextBlock FontSize="12" FontWeight="Bold"  Text="Описание: "></TextBlock>
+                                    <TextBlock  FontSize="14"  TextWrapping="Wrap" Width="370" Text="{Binding Description}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Margin="3" Orientation="Horizontal">
+                                    <TextBlock FontSize="12" FontWeight="Bold"  Text="Категория: "></TextBlock>
+                                    <TextBlock FontSize="12" Text="{Binding Cotegories.Name}"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel  Grid.Row="0" Grid.Column="2" Orientation="Horizontal" Margin="5">
+                                <TextBlock FontSize="18" FontWeight="Bold" Text="Цена: "></TextBlock>
+                                <TextBlock FontSize="18" Text="{Binding Price}"></TextBlock>
+                                <TextBlock FontSize="18" Text=" руб."></TextBlock>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Border>
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Page>
