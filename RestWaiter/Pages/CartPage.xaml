@@ -77,8 +77,9 @@ Height="700" Width="1000"
                                     </Grid.RowDefinitions>
                                     <StackPanel Grid.Row="0" Grid.Column="1">
                                         <TextBlock Padding="3" FontSize="18" FontWeight="Bold" Text="{Binding Meal.Name}"></TextBlock>
-                                        <StackPanel Margin="3" Orientation="Horizontal">
+                                        <StackPanel Margin="3" Orientation="Vertical">
                                             <TextBlock FontSize="12" Text="{Binding Meal.Price,StringFormat='Цена за штуку: {0} руб.'}"></TextBlock>
+                                            <TextBlock FontSize="12" Text="{Binding Status_Order_Meal.Name}"></TextBlock>
                                         </StackPanel>
                                     </StackPanel>
                                     <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Orientation="Horizontal" Margin="5">
@@ -94,17 +95,17 @@ Height="700" Width="1000"
                                             <RowDefinition Height="*"></RowDefinition>
                                             <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
-                                        <Button Margin="3" FontSize="14" Grid.Row="0" Grid.Column="0" Width="45" Height="45"  Background="Transparent" Visibility="{Binding VisabilityBt}"  BorderBrush="Transparent" Padding="10"  Click="Button_Click_2" CommandParameter="{Binding}">
+                                        <Button Margin="3" FontSize="14" Grid.Row="0" Grid.Column="0" Width="45" Height="45"  Background="Transparent" Visibility="{Binding visabilitybt}"  BorderBrush="Transparent" Padding="10"  Click="Button_Click_2" CommandParameter="{Binding}">
                                             <Button.Content>
                                                 <Image Source="/Resources/plus.png" Stretch="UniformToFill"></Image>
                                             </Button.Content>
                                         </Button>
-                                        <Button Margin="3" FontSize="14" Grid.Row="1" Grid.Column="0" Width="45" Height="45"  Background="Transparent" BorderBrush="Transparent" Padding="10" Click="Button_Click" CommandParameter="{Binding}">
+                                        <Button Margin="3" FontSize="14" Grid.Row="1" Grid.Column="0" Width="45" Height="45"  Background="Transparent" BorderBrush="Transparent" Visibility="{Binding visabilitybt}" Padding="10" Click="Button_Click" CommandParameter="{Binding}">
                                             <Button.Content>
                                                 <Image Source="/Resources/minus.png" Stretch="UniformToFill"></Image>
                                             </Button.Content>
                                         </Button>
-                                        <Button Margin="3"  Grid.Row="0" Grid.RowSpan="2" Width="70" Height="70" Background="Transparent"  BorderBrush="Transparent" Grid.Column="1" Padding="10" Click="Button_Click_1" CommandParameter="{Binding}">
+                                        <Button Margin="3"  Grid.Row="0" Grid.RowSpan="2" Width="70" Height="70" Background="Transparent"  BorderBrush="Transparent" Grid.Column="1" Visibility="{Binding visabilitybt}" Padding="10" Click="Button_Click_1" CommandParameter="{Binding}">
                                             <Button.Content>
                                                 <Image Source="/Resources/cartRemove.png" Stretch="Fill"></Image>
                                             </Button.Content>
@@ -126,20 +127,22 @@ Height="700" Width="1000"
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Orientation="Horizontal">
-                        <Button>Скидка</Button>
+                    <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Orientation="Horizontal" x:Name="SpDiscountCode">
+                        <TextBox Height="50" Margin="5 0 0 0" FontSize="27" MaxLength="5" TextAlignment="Center" VerticalAlignment="Center" Width="80" x:Name="TbCode"></TextBox>
+                        <Button x:Name="BtDiscount" Click="BtDiscount_Click" Height="50" Width="130" Margin="5 0 0 0">Активировать купон</Button>
                     </StackPanel>
                     <StackPanel Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
-                        <TextBlock x:Name="TbTotalPrice">Цена: 0.00</TextBlock>
+                        <TextBlock x:Name="TbTotalPrice">Цена: 0.00 руб.</TextBlock>
                     </StackPanel>
-                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                        <TextBlock x:Name="TbEndePrice">Цена со скидкой: 0.00</TextBlock>
+                    <StackPanel Grid.Row="1" Grid.Column="1" Visibility="Hidden" x:Name="SpDiscount" Orientation="Horizontal">
+                        <TextBlock x:Name="TbEndePrice"></TextBlock>
                     </StackPanel>
-                    <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal">
+                    <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" x:Name="SpButtonStartOrder">
                         <Button x:Name="BtClear" Click="BtClear_Click" Background="Red" Foreground="White" Width="200" Height="50" Margin="15 0 0 0">Очитить заказ</Button>
+                        <Button x:Name="BtCompl"  Click="BtCompl_Click" Background="Green" Foreground="White" Width="200" Height="50" Margin="60 0 0 0">Подтвердить заказ</Button>
                     </StackPanel>
-                    <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
-                        <Button x:Name="BtCompl" Click="BtCompl_Click" Background="Green" Foreground="White" Width="200" Height="50" Margin="15 0 0 0">Подтвердить заказ</Button>
+                    <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" x:Name="SpButtonCmplOrder" Visibility="Collapsed">
+                        <Button x:Name="BtCalculate"  Click="BtCalculate_Click" Background="Green" Foreground="White" Width="200" Height="50" Margin="150 0 0 0">Рассчитать гостей</Button>
                     </StackPanel>
                 </Grid>
             </Grid>

@@ -25,9 +25,6 @@ namespace RestWaiter.Pages
         public CartPage()
         {
             InitializeComponent();
-            //LvTable.ItemsSource = App.DB.Order.Where(x => x.EmployeeID == App.LoggedEmployee.ID && x.DataTimeEnd == null).ToList();
-            //LvTable.SelectedIndex = selectind;
-            //contsOrd = LvTable.SelectedItem as Order;
             Update();
             Update2();
         }
@@ -93,7 +90,7 @@ namespace RestWaiter.Pages
 
         private void Update()
         {
-            LvTable.ItemsSource = App.DB.Order.Where(x => x.EmployeeID == App.LoggedEmployee.ID && x.DataTimeEnd == null).ToList();
+            LvTable.ItemsSource = App.DB.Order.Where(x => x.EmployeeID == App.LoggedEmployee.ID && x.DataTimeEnd == null && x.DateTimesSt < DateTime.Now).ToList();
             LvTable.SelectedIndex = selectind;
             contsOrd = LvTable.SelectedItem as Order;
             LbCart.ItemsSource = App.DB.Order_Meal.Where(x => x.OrderID == contsOrd.ID).ToList();
@@ -103,10 +100,38 @@ namespace RestWaiter.Pages
             {
                 pri += (int)items.Meal.Price * (int)items.Count;
             }
-            contsOrd.Price = (int)pri;
+            contsOrd.Price = (int)pri; 
+            if (contsOrd.DiscountId != null)       
+            {
+                contsOrd.DiscountPrice = (int)(pri * (1 - ((double)contsOrd.DiscountCode.Discount / 100)));
+            }
+            
             App.DB.SaveChanges();
             TbTotalPrice.Text = $"Цена: {contsOrd.Price} руб.";
-            TbEndePrice.Text = $"Цена со скидкой: {contsOrd.Price * 0.95} руб.";
+            if(contsOrd.DiscountId != null)
+            {
+                TbEndePrice.Text = $"Цена со скидкой: {contsOrd.DiscountPrice} руб.";
+            }
+           if(contsOrd.StatusID == 5)
+            {
+                SpButtonStartOrder.Visibility = Visibility.Collapsed;
+                SpButtonCmplOrder.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                SpButtonStartOrder.Visibility = Visibility.Visible;
+                SpButtonCmplOrder.Visibility = Visibility.Collapsed;
+            }
+            if (contsOrd.DiscountId != null)
+            {
+                SpDiscountCode.Visibility = Visibility.Hidden;
+                SpDiscount.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                SpDiscountCode.Visibility = Visibility.Visible;
+                SpDiscount.Visibility = Visibility.Hidden;
+            }
           
         }
 
@@ -120,7 +145,7 @@ namespace RestWaiter.Pages
         private void BtClear_Click(object sender, RoutedEventArgs e)
         {
           
-                IEnumerable<Order_Meal> products = App.DB.Order_Meal.Where(x => x.OrderID == contsOrd.ID).ToList();
+            IEnumerable<Order_Meal> products = App.DB.Order_Meal.Where(x => x.OrderID == contsOrd.ID).ToList();
             foreach (var items in products)
             {
                 if (items.StatusId == 1)
@@ -228,14 +253,43 @@ namespace RestWaiter.Pages
                     else
                     {
                         MessageBox.Show("Одну позицию из меню можно заказать не больше 20 раз в одно заказе!");
+                        return;
                     }
                 }
-                    App.DB.SaveChanges();
+                contsOrd.StatusID = 1;
+                App.DB.SaveChanges();
                 Update();
                 }
                 
             }
 
-        
+        private void BtDiscount_Click(object sender, RoutedEventArgs e)
+        {
+            var code = App.DB.DiscountCode.FirstOrDefault(x => x.Code == TbCode.Text.Trim() && x.DataStart < DateTime.Now && x.DataEnd > DateTime.Now) as DiscountCode;
+            if(code != null && contsOrd.DiscountId == null)
+            {
+                contsOrd.DiscountId = code.Id;
+                SpDiscount.Visibility = Visibility.Visible;
+                double disc = (double)(1 - ((double)code.Discount / 100));
+                contsOrd.DiscountPrice = (int)(contsOrd.Price * disc);
+                App.DB.SaveChanges();
+                TbEndePrice.Text = $"Цена со скидкой: {contsOrd.DiscountPrice} руб.";
+            }
+            else
+            {
+                MessageBox.Show("Код неверный или истек срок действия");
+                return;
+            }
+        }
+
+        private void BtCalculate_Click(object sender, RoutedEventArgs e)
+        {
+            contsOrd.DataTimeEnd = DateTime.Now;
+            contsOrd.StatusID = 6;
+            MessageBox.Show($"Стол {contsOrd.TableId} рассчитан.");
+            App.DB.SaveChanges();
+            Update();
+            Update2();
+        }
     }
     }

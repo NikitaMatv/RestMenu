@@ -29,6 +29,7 @@ namespace RestWaiter.Components
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Deliverer> Deliverer { get; set; }
         public virtual DbSet<Delivery> Delivery { get; set; }
+        public virtual DbSet<DiscountCode> DiscountCode { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<EmployeeRole> EmployeeRole { get; set; }
         public virtual DbSet<Ingridient> Ingridient { get; set; }
