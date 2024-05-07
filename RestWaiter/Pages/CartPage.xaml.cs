@@ -170,7 +170,7 @@ namespace RestWaiter.Pages
             App.DB.SaveChanges();
             Update();
         }
-        public IEnumerable<Meal> meal = App.DB.Meal.ToList();
+        public IEnumerable<Meal> meal = App.DB.Meal.Where(x=>x.RequestStatusID == 3).ToList();
 
         private void Update2()
         {
@@ -186,36 +186,36 @@ namespace RestWaiter.Pages
         }
         private void BtFirst_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.Where(x => x.CotegoriesID == 1).ToList();
+            meal = App.DB.Meal.Where(x => x.CotegoriesID == 1).Where(x => x.RequestStatusID == 3).ToList();
             Update2();
         }
         private void BtSecond_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.Where(x => x.CotegoriesID == 2).ToList();
+            meal = App.DB.Meal.Where(x => x.CotegoriesID == 2).Where(x => x.RequestStatusID == 3).ToList();
             Update2();
         }
 
         private void BtSalad_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.Where(x => x.CotegoriesID == 3).ToList();
+            meal = App.DB.Meal.Where(x => x.CotegoriesID == 3).Where(x => x.RequestStatusID == 3).ToList();
             Update2();
         }
 
         private void BtDessert_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.Where(x => x.CotegoriesID == 4).ToList();
+            meal = App.DB.Meal.Where(x => x.CotegoriesID == 4).Where(x => x.RequestStatusID == 3).ToList();
             Update2();
         }
 
         private void BtDrinks_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.Where(x => x.CotegoriesID == 5).ToList();
+            meal = App.DB.Meal.Where(x => x.CotegoriesID == 5).Where(x => x.RequestStatusID == 3).ToList();
             Update2();
         }
 
         private void BtAll_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.ToList();
+            meal = App.DB.Meal.Where(x => x.RequestStatusID == 3).ToList();
             TbSearch.Text = string.Empty;
             Update2();
         }

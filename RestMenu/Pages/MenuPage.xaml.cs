@@ -24,7 +24,7 @@ namespace RestMenu.Pages
         public MenuPage()
         {
             InitializeComponent();
-            LBMeal.ItemsSource = App.DB.Meal.ToList();
+            LBMeal.ItemsSource = App.DB.Meal.Where(x=>x.RequestStatusID == 3).ToList();
         }
         public IEnumerable<Meal> meal = App.DB.Meal.ToList();
     
@@ -32,7 +32,7 @@ namespace RestMenu.Pages
         {
             if (TbSearch.Text.Length > 0)
             {
-                meal = meal.Where(x => x.Name.ToLower().Contains(TbSearch.Text.Trim().ToLower()));
+                meal = meal.Where(x => x.Name.ToLower().Contains(TbSearch.Text.Trim().ToLower()) && x.RequestStatusID == 3);
                 LBMeal.ItemsSource = meal.ToList();
             }
             else
@@ -42,36 +42,36 @@ namespace RestMenu.Pages
         }
         private void BtFirst_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.Where(x => x.CotegoriesID == 1).ToList();
+            meal = App.DB.Meal.Where(x => x.CotegoriesID == 1 && x.RequestStatusID == 3).ToList();
             Update();
         }
         private void BtSecond_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.Where(x => x.CotegoriesID == 2).ToList();
+            meal = App.DB.Meal.Where(x => x.CotegoriesID == 2 && x.RequestStatusID == 3).ToList();
             Update();
         }
 
         private void BtSalad_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.Where(x => x.CotegoriesID == 3).ToList();
+            meal = App.DB.Meal.Where(x => x.CotegoriesID == 3 && x.RequestStatusID == 3).ToList();
             Update();
         }
 
         private void BtDessert_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.Where(x => x.CotegoriesID == 4).ToList();
+            meal = App.DB.Meal.Where(x => x.CotegoriesID == 4 && x.RequestStatusID == 3).ToList();
             Update();
         }
 
         private void BtDrinks_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.Where(x => x.CotegoriesID == 5).ToList();
+            meal = App.DB.Meal.Where(x => x.CotegoriesID == 5 && x.RequestStatusID == 3).ToList();
             Update();
         }
 
         private void BtAll_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.ToList();
+            meal = App.DB.Meal.Where(x=>x.RequestStatusID == 3).ToList();
             TbSearch.Text = string.Empty;
             Update();
         }

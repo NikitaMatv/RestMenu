@@ -38,6 +38,7 @@ namespace RestShev.Components
         public virtual DbSet<Options> Options { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Order_Meal> Order_Meal { get; set; }
+        public virtual DbSet<RequestStatus> RequestStatus { get; set; }
         public virtual DbSet<Restaurant> Restaurant { get; set; }
         public virtual DbSet<Status_Order_Meal> Status_Order_Meal { get; set; }
         public virtual DbSet<StatusOrder> StatusOrder { get; set; }

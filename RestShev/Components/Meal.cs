@@ -27,10 +27,12 @@ namespace RestShev.Components
         public byte[] Images { get; set; }
         public Nullable<int> CotegoriesID { get; set; }
         public string Description { get; set; }
+        public Nullable<int> RequestStatusID { get; set; }
     
         public virtual Cotegories Cotegories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Meal_Ingridient> Meal_Ingridient { get; set; }
+        public virtual RequestStatus RequestStatus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Meal> Order_Meal { get; set; }
     }

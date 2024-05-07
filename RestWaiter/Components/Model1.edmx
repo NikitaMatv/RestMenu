@@ -94,6 +94,7 @@
           <Property Name="Images" Type="image" />
           <Property Name="CotegoriesID" Type="int" />
           <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="RequestStatusID" Type="int" />
         </EntityType>
         <EntityType Name="Meal_Ingridient">
           <Key>
@@ -136,6 +137,13 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Count" Type="int" />
           <Property Name="StatusId" Type="int" />
+        </EntityType>
+        <EntityType Name="RequestStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Restaurant">
           <Key>
@@ -288,6 +296,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Meal_RequestStatus">
+          <End Role="RequestStatus" Type="Self.RequestStatus" Multiplicity="0..1" />
+          <End Role="Meal" Type="Self.Meal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Meal">
+              <PropertyRef Name="RequestStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Order_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
@@ -434,6 +454,7 @@
           <EntitySet Name="Options" EntityType="Self.Options" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order_Meal" EntityType="Self.Order_Meal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestStatus" EntityType="Self.RequestStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Restaurant" EntityType="Self.Restaurant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Status_Order_Meal" EntityType="Self.Status_Order_Meal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StatusOrder" EntityType="Self.StatusOrder" Schema="dbo" store:Type="Tables" />
@@ -472,6 +493,10 @@
           <AssociationSet Name="FK_Meal_Ingridient_Meal" Association="Self.FK_Meal_Ingridient_Meal">
             <End Role="Meal" EntitySet="Meal" />
             <End Role="Meal_Ingridient" EntitySet="Meal_Ingridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meal_RequestStatus" Association="Self.FK_Meal_RequestStatus">
+            <End Role="RequestStatus" EntitySet="RequestStatus" />
+            <End Role="Meal" EntitySet="Meal" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
             <End Role="Customer" EntitySet="Customer" />
@@ -536,6 +561,7 @@
           <EntitySet Name="Options" EntityType="RestarauntDeliveryModel.Options" />
           <EntitySet Name="Order" EntityType="RestarauntDeliveryModel.Order" />
           <EntitySet Name="Order_Meal" EntityType="RestarauntDeliveryModel.Order_Meal" />
+          <EntitySet Name="RequestStatus" EntityType="RestarauntDeliveryModel.RequestStatus" />
           <EntitySet Name="Restaurant" EntityType="RestarauntDeliveryModel.Restaurant" />
           <EntitySet Name="Status_Order_Meal" EntityType="RestarauntDeliveryModel.Status_Order_Meal" />
           <EntitySet Name="StatusOrder" EntityType="RestarauntDeliveryModel.StatusOrder" />
@@ -590,6 +616,10 @@
           <AssociationSet Name="FK_Meal_Ingridient_Meal" Association="RestarauntDeliveryModel.FK_Meal_Ingridient_Meal">
             <End Role="Meal" EntitySet="Meal" />
             <End Role="Meal_Ingridient" EntitySet="Meal_Ingridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meal_RequestStatus" Association="RestarauntDeliveryModel.FK_Meal_RequestStatus">
+            <End Role="RequestStatus" EntitySet="RequestStatus" />
+            <End Role="Meal" EntitySet="Meal" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Meal_Meal" Association="RestarauntDeliveryModel.FK_Order_Meal_Meal">
             <End Role="Meal" EntitySet="Meal" />
@@ -724,8 +754,10 @@
           <Property Name="Images" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="CotegoriesID" Type="Int32" />
           <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RequestStatusID" Type="Int32" />
           <NavigationProperty Name="Cotegories" Relationship="RestarauntDeliveryModel.FK_Meal_Cotegories" FromRole="Meal" ToRole="Cotegories" />
           <NavigationProperty Name="Meal_Ingridient" Relationship="RestarauntDeliveryModel.FK_Meal_Ingridient_Meal" FromRole="Meal" ToRole="Meal_Ingridient" />
+          <NavigationProperty Name="RequestStatus" Relationship="RestarauntDeliveryModel.FK_Meal_RequestStatus" FromRole="Meal" ToRole="RequestStatus" />
           <NavigationProperty Name="Order_Meal" Relationship="RestarauntDeliveryModel.FK_Order_Meal_Meal" FromRole="Meal" ToRole="Order_Meal" />
         </EntityType>
         <EntityType Name="Meal_Ingridient">
@@ -782,6 +814,14 @@
           <NavigationProperty Name="Meal" Relationship="RestarauntDeliveryModel.FK_Order_Meal_Meal" FromRole="Order_Meal" ToRole="Meal" />
           <NavigationProperty Name="Order" Relationship="RestarauntDeliveryModel.FK_Order_Meal_Order" FromRole="Order_Meal" ToRole="Order" />
           <NavigationProperty Name="Status_Order_Meal" Relationship="RestarauntDeliveryModel.FK_Order_Meal_Status_Order_Meal" FromRole="Order_Meal" ToRole="Status_Order_Meal" />
+        </EntityType>
+        <EntityType Name="RequestStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Meal" Relationship="RestarauntDeliveryModel.FK_Meal_RequestStatus" FromRole="RequestStatus" ToRole="Meal" />
         </EntityType>
         <EntityType Name="Restaurant">
           <Key>
@@ -989,6 +1029,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Meal_RequestStatus">
+          <End Type="RestarauntDeliveryModel.RequestStatus" Role="RequestStatus" Multiplicity="0..1" />
+          <End Type="RestarauntDeliveryModel.Meal" Role="Meal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Meal">
+              <PropertyRef Name="RequestStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Order_Meal_Meal">
           <End Type="RestarauntDeliveryModel.Meal" Role="Meal" Multiplicity="0..1" />
           <End Type="RestarauntDeliveryModel.Order_Meal" Role="Order_Meal" Multiplicity="*" />
@@ -1169,6 +1221,7 @@
           <EntitySetMapping Name="Meal">
             <EntityTypeMapping TypeName="RestarauntDeliveryModel.Meal">
               <MappingFragment StoreEntitySet="Meal">
+                <ScalarProperty Name="RequestStatusID" ColumnName="RequestStatusID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="CotegoriesID" ColumnName="CotegoriesID" />
                 <ScalarProperty Name="Images" ColumnName="Images" />
@@ -1221,6 +1274,14 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="MealID" ColumnName="MealID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestStatus">
+            <EntityTypeMapping TypeName="RestarauntDeliveryModel.RequestStatus">
+              <MappingFragment StoreEntitySet="RequestStatus">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

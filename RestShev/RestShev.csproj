@@ -126,6 +126,9 @@
     <Compile Include="Components\Order_Meal.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Components\RequestStatus.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Components\Restaurant.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -171,6 +174,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\RequestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\AddEditMealPage.xaml.cs">
@@ -187,6 +194,9 @@
     </Compile>
     <Compile Include="Pages\OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RequestPage.xaml.cs">
+      <DependentUpon>RequestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

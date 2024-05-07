@@ -12,16 +12,18 @@ namespace RestMenu.Components
     using System;
     using System.Collections.Generic;
     
-    public partial class Order_Meal
+    public partial class Status_Order_Meal
     {
-        public Nullable<int> MealID { get; set; }
-        public Nullable<int> OrderID { get; set; }
-        public int ID { get; set; }
-        public Nullable<int> Count { get; set; }
-        public Nullable<int> StatusId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Status_Order_Meal()
+        {
+            this.Order_Meal = new HashSet<Order_Meal>();
+        }
     
-        public virtual Meal Meal { get; set; }
-        public virtual Order Order { get; set; }
-        public virtual Status_Order_Meal Status_Order_Meal { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order_Meal> Order_Meal { get; set; }
     }
 }

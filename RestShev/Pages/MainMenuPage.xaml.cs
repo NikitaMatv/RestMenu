@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace RestShev.Pages
 {
     /// <summary>
@@ -40,7 +41,7 @@ namespace RestShev.Pages
 
         private void BtCart_Click(object sender, RoutedEventArgs e)
         {
-            //MemuFame.NavigationService.Navigate(new EmployeePage());
+            MemuFame.NavigationService.Navigate(new RequestPage());
         }
 
         private void BtMenu_Click(object sender, RoutedEventArgs e)

@@ -94,7 +94,13 @@ namespace RestShev.Pages
             }
             if (contextmeal.ID == 0)
             {
+                contextmeal.RequestStatusID = 1;
                 App.DB.Meal.Add(contextmeal);
+
+            }
+            else
+            {
+                contextmeal.RequestStatusID = 2;
             }
             App.DB.SaveChanges();
             NavigationService.Navigate(new MenuPage());

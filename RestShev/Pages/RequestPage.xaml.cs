@@ -1,4 +1,4 @@
-﻿using RestWaiter.Components;
+﻿using RestShev.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,25 +14,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RestWaiter.Pages
+namespace RestShev.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MenuPage.xaml
+    /// Логика взаимодействия для RequestPage.xaml
     /// </summary>
-    public partial class MenuPage : Page
+    public partial class RequestPage : Page
     {
-        public MenuPage()
+        public RequestPage()
         {
             InitializeComponent();
-            LBMeal.ItemsSource = App.DB.Meal.ToList();
+            LBMeal.ItemsSource = App.DB.Meal.OrderByDescending(x=>x.ID).ToList();
         }
         public IEnumerable<Meal> meal = App.DB.Meal.ToList();
-
         private void Update()
         {
             if (TbSearch.Text.Length > 0)
             {
-                meal = meal.Where(x => x.Name.ToLower().Contains(TbSearch.Text.Trim().ToLower()));
+                meal = meal.Where(x => x.Name.ToLower().Contains(TbSearch.Text.Trim().ToLower())).OrderByDescending(x => x.ID);
                 LBMeal.ItemsSource = meal.ToList();
             }
             else
@@ -42,36 +41,36 @@ namespace RestWaiter.Pages
         }
         private void BtFirst_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.Where(x => x.CotegoriesID == 1).ToList();
+            meal = App.DB.Meal.Where(x => x.CotegoriesID == 1).OrderByDescending(x => x.ID).ToList();
             Update();
         }
         private void BtSecond_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.Where(x => x.CotegoriesID == 2).ToList();
+            meal = App.DB.Meal.Where(x => x.CotegoriesID == 2).OrderByDescending(x => x.ID).ToList();
             Update();
         }
 
         private void BtSalad_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.Where(x => x.CotegoriesID == 3).ToList();
+            meal = App.DB.Meal.Where(x => x.CotegoriesID == 3).OrderByDescending(x => x.ID).ToList();
             Update();
         }
 
         private void BtDessert_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.Where(x => x.CotegoriesID == 4).ToList();
+            meal = App.DB.Meal.Where(x => x.CotegoriesID == 4).OrderByDescending(x => x.ID).ToList();
             Update();
         }
 
         private void BtDrinks_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.Where(x => x.CotegoriesID == 5).ToList();
+            meal = App.DB.Meal.Where(x => x.CotegoriesID == 5).OrderByDescending(x => x.ID).ToList();
             Update();
         }
 
         private void BtAll_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            meal = App.DB.Meal.ToList();
+            meal = App.DB.Meal.OrderByDescending(x => x.ID).ToList();
             TbSearch.Text = string.Empty;
             Update();
         }
@@ -79,11 +78,6 @@ namespace RestWaiter.Pages
         private void TbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             Update();
-        }
-
-        private void BtAdd_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        }  
     }
 }
