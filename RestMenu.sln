@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestHostes", "RestHostes\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestShev", "RestShev\RestShev.csproj", "{1F61322B-477C-4A50-91F6-F2C799D0547A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestOrder", "RestOrder\RestOrder.csproj", "{C713DF81-9FBC-4335-AF2F-E6A5356F8CF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{1F61322B-477C-4A50-91F6-F2C799D0547A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F61322B-477C-4A50-91F6-F2C799D0547A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F61322B-477C-4A50-91F6-F2C799D0547A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C713DF81-9FBC-4335-AF2F-E6A5356F8CF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C713DF81-9FBC-4335-AF2F-E6A5356F8CF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C713DF81-9FBC-4335-AF2F-E6A5356F8CF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C713DF81-9FBC-4335-AF2F-E6A5356F8CF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

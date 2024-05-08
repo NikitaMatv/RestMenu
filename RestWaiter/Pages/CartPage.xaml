@@ -129,7 +129,7 @@ Height="700" Width="1000"
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Orientation="Horizontal" x:Name="SpDiscountCode">
                         <TextBox Height="50" Margin="5 0 0 0" FontSize="27" MaxLength="5" TextAlignment="Center" VerticalAlignment="Center" Width="80" x:Name="TbCode"></TextBox>
-                        <Button x:Name="BtDiscount" Click="BtDiscount_Click" Height="50" Width="130" Margin="5 0 0 0">Активировать купон</Button>
+                        <Button x:Name="BtDiscount" Style="{StaticResource RoundButton}" Background="White" Click="BtDiscount_Click" Height="50" Width="130" Margin="5 0 0 0">Активировать купон</Button>
                     </StackPanel>
                     <StackPanel Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
                         <TextBlock x:Name="TbTotalPrice">Цена: 0.00 руб.</TextBlock>
@@ -138,8 +138,8 @@ Height="700" Width="1000"
                         <TextBlock x:Name="TbEndePrice"></TextBlock>
                     </StackPanel>
                     <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" x:Name="SpButtonStartOrder">
-                        <Button x:Name="BtClear" Click="BtClear_Click" Background="Red" Foreground="White" Width="200" Height="50" Margin="15 0 0 0">Очитить заказ</Button>
-                        <Button x:Name="BtCompl"  Click="BtCompl_Click" Background="Green" Foreground="White" Width="200" Height="50" Margin="60 0 0 0">Подтвердить заказ</Button>
+                        <Button x:Name="BtClear" Style="{StaticResource RoundButton}" Click="BtClear_Click" Background="Red" Foreground="White" Width="200" Height="50" Margin="15 0 0 0">Очитить заказ</Button>
+                        <Button x:Name="BtCompl" Style="{StaticResource RoundButton}" Click="BtCompl_Click" Background="Green" Foreground="White" Width="200" Height="50" Margin="60 0 0 0">Подтвердить заказ</Button>
                     </StackPanel>
                     <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" x:Name="SpButtonCmplOrder" Visibility="Collapsed">
                         <Button x:Name="BtCalculate"  Click="BtCalculate_Click" Background="Green" Foreground="White" Width="200" Height="50" Margin="150 0 0 0">Рассчитать гостей</Button>

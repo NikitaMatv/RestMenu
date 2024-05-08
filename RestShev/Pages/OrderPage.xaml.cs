@@ -12,15 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using RestShev.Components;
 namespace RestShev.Pages
 {
     /// <summary>
     /// Логика взаимодействия для OrderPage.xaml
     /// </summary>
-    public partial class Order_Meal : Page
+    public partial class OrderPage : Page
     {
-        public Order_Meal()
+        public OrderPage()
         {
             InitializeComponent();
             var dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
@@ -37,8 +37,24 @@ namespace RestShev.Pages
 
         private void BtDetails_Click(object sender, RoutedEventArgs e)
         {
-            Order_Meal select = (sender as MenuItem).DataContext as Order_Meal;
-            //App.DB.Order_Meal.FirstOrDefault(x=>x)
+            var select = (sender as MenuItem).DataContext as Order_Meal;
+            if(select == null)
+            {
+                return;
+            }
+            MessageBox.Show($"{select.Meal.Recipe}");
+            return;
+        }
+
+        private void BtCompl_Click(object sender, RoutedEventArgs e)
+        {
+            var select = (sender as MenuItem).DataContext as Order_Meal;
+            if (select == null)
+            {
+                return;
+            }
+            select.StatusId = 4;
+            App.DB.SaveChanges();
         }
     }
 }

@@ -22,6 +22,7 @@ namespace RestWaiter.Pages
     {
         public Order contsOrd = new Order();
         public int selectind = 0;
+        public bool allcomplit = false;
         public CartPage()
         {
             InitializeComponent();
@@ -90,6 +91,7 @@ namespace RestWaiter.Pages
 
         private void Update()
         {
+            bool allcomplit = true;
             LvTable.ItemsSource = App.DB.Order.Where(x => x.Tables.EmployeeID == App.LoggedEmployee.ID  && x.DataTimeEnd == null && x.DateTimesSt < DateTime.Now).ToList();
             LvTable.SelectedIndex = selectind;
             contsOrd = LvTable.SelectedItem as Order;
@@ -99,13 +101,20 @@ namespace RestWaiter.Pages
             foreach (var items in products)
             {
                 pri += (int)items.Meal.Price * (int)items.Count;
+                if(items.StatusId != 4)
+                {
+                    allcomplit = false;
+                }
             }
             contsOrd.Price = (int)pri; 
             if (contsOrd.DiscountId != null)       
             {
                 contsOrd.DiscountPrice = (int)(pri * (1 - ((double)contsOrd.DiscountCode.Discount / 100)));
             }
-            
+            if(allcomplit == true)
+            {
+                contsOrd.StatusID = 5;
+            }
             App.DB.SaveChanges();
             TbTotalPrice.Text = $"Цена: {contsOrd.Price} руб.";
             if(contsOrd.DiscountId != null)

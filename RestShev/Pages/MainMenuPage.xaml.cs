@@ -29,7 +29,7 @@ namespace RestShev.Pages
 
         private void BtHistory_Click(object sender, RoutedEventArgs e)
         {
-            MemuFame.NavigationService.Navigate(new Order_Meal());
+            MemuFame.NavigationService.Navigate(new OrderPage());
         }
 
         private void BtExit_Click(object sender, RoutedEventArgs e)

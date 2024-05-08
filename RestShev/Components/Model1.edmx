@@ -95,6 +95,7 @@
           <Property Name="CotegoriesID" Type="int" />
           <Property Name="Description" Type="nvarchar" MaxLength="200" />
           <Property Name="RequestStatusID" Type="int" />
+          <Property Name="Recipe" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Meal_Ingridient">
           <Key>
@@ -755,6 +756,7 @@
           <Property Name="CotegoriesID" Type="Int32" />
           <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="RequestStatusID" Type="Int32" />
+          <Property Name="Recipe" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Cotegories" Relationship="RestarauntDeliveryModel.FK_Meal_Cotegories" FromRole="Meal" ToRole="Cotegories" />
           <NavigationProperty Name="Meal_Ingridient" Relationship="RestarauntDeliveryModel.FK_Meal_Ingridient_Meal" FromRole="Meal" ToRole="Meal_Ingridient" />
           <NavigationProperty Name="RequestStatus" Relationship="RestarauntDeliveryModel.FK_Meal_RequestStatus" FromRole="Meal" ToRole="RequestStatus" />
@@ -1125,7 +1127,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1221,6 +1223,7 @@
           <EntitySetMapping Name="Meal">
             <EntityTypeMapping TypeName="RestarauntDeliveryModel.Meal">
               <MappingFragment StoreEntitySet="Meal">
+                <ScalarProperty Name="Recipe" ColumnName="Recipe" />
                 <ScalarProperty Name="RequestStatusID" ColumnName="RequestStatusID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="CotegoriesID" ColumnName="CotegoriesID" />

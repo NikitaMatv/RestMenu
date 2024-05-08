@@ -28,6 +28,7 @@ namespace RestShev.Components
         public Nullable<int> CotegoriesID { get; set; }
         public string Description { get; set; }
         public Nullable<int> RequestStatusID { get; set; }
+        public string Recipe { get; set; }
     
         public virtual Cotegories Cotegories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
