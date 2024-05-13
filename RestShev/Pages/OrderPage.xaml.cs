@@ -55,6 +55,22 @@ namespace RestShev.Pages
             }
             select.StatusId = 4;
             App.DB.SaveChanges();
+            bool allcomplit = true;
+            Order order = App.DB.Order.FirstOrDefault(x=>x.ID == select.OrderID);
+            IEnumerable<Order_Meal> products = App.DB.Order_Meal.Where(x => x.OrderID == order.ID).ToList();
+            foreach (var items in products)
+            {            
+                if (items.StatusId != 4)
+                {
+                    allcomplit = false;
+                }
+            }         
+            if (allcomplit == true)
+            {
+                order.StatusID = 3;
+            }
+            App.DB.SaveChanges();
+            LbCart.ItemsSource = App.DB.Order_Meal.Where(x => x.StatusId == 2).ToList();
         }
     }
 }

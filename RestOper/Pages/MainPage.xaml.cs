@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestOper.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,22 +13,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using RestWaiter.Components;
-namespace RestWaiter.Pages
+
+namespace RestOper.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для CartPage.xaml
+    /// Логика взаимодействия для MainPage.xaml
     /// </summary>
-    public partial class CartPage : Page
+    public partial class MainPage : Page
     {
         public Order contsOrd = new Order();
         public int selectind = 0;
         public bool allcomplit = false;
-        public CartPage()
+        public MainPage()
         {
             InitializeComponent();
             Update();
             Update2();
+
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -92,40 +94,38 @@ namespace RestWaiter.Pages
         private void Update()
         {
             bool allcomplit = true;
-            LvTable.ItemsSource = App.DB.Order.Where(x => x.Tables.EmployeeID == App.LoggedEmployee.ID  && x.DataTimeEnd == null && x.DateTimesSt < DateTime.Now).ToList();
-            LvTable.SelectedIndex = selectind;
-            contsOrd = LvTable.SelectedItem as Order;
             LbCart.ItemsSource = App.DB.Order_Meal.Where(x => x.OrderID == contsOrd.ID).ToList();
+
             int pri = 0;
             IEnumerable<Order_Meal> products = App.DB.Order_Meal.Where(x => x.OrderID == contsOrd.ID).ToList();
             foreach (var items in products)
             {
                 pri += (int)items.Meal.Price * (int)items.Count;
-                if(items.StatusId != 4)
+                if (items.StatusId != 2)
                 {
                     allcomplit = false;
                 }
             }
-            if (contsOrd.ID == 0 || contsOrd.Order_Meal.Count() == 0)
+            if(contsOrd.ID == 0 || contsOrd.Order_Meal.Count() == 0)
             {
                 allcomplit = false;
             }
-            contsOrd.Price = (int)pri; 
-            if (contsOrd.DiscountId != null)       
+            contsOrd.Price = (int)pri;
+            if (contsOrd.DiscountId != null)
             {
                 contsOrd.DiscountPrice = (int)(pri * (1 - ((double)contsOrd.DiscountCode.Discount / 100)));
             }
-            if(allcomplit == true)
+            if (allcomplit == true)
             {
                 contsOrd.StatusID = 3;
             }
             App.DB.SaveChanges();
             TbTotalPrice.Text = $"Цена: {contsOrd.Price} руб.";
-            if(contsOrd.DiscountId != null)
+            if (contsOrd.DiscountId != null)
             {
                 TbEndePrice.Text = $"Цена со скидкой: {contsOrd.DiscountPrice} руб.";
             }
-           if(contsOrd.StatusID == 3)
+            if (contsOrd.StatusID == 3)
             {
                 SpButtonStartOrder.Visibility = Visibility.Collapsed;
                 SpButtonCmplOrder.Visibility = Visibility.Visible;
@@ -145,20 +145,17 @@ namespace RestWaiter.Pages
                 SpDiscountCode.Visibility = Visibility.Visible;
                 SpDiscount.Visibility = Visibility.Hidden;
             }
-          
-        }
 
-        private void LvTable_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            contsOrd = (sender as StackPanel).DataContext as Order;
-            selectind = LvTable.SelectedIndex;
-            Update();
-        }
+        }     
 
         private void BtClear_Click(object sender, RoutedEventArgs e)
         {
-          
-            IEnumerable<Order_Meal> products = App.DB.Order_Meal.Where(x => x.OrderID == contsOrd.ID).ToList();
+            if (contsOrd.ID == 0)
+            {
+                MessageBox.Show("Заказ ещё не создан");
+                return;
+            }
+                IEnumerable<Order_Meal> products = App.DB.Order_Meal.Where(x => x.OrderID == contsOrd.ID).ToList();
             foreach (var items in products)
             {
                 if (items.StatusId == 1)
@@ -166,13 +163,18 @@ namespace RestWaiter.Pages
                     App.DB.Order_Meal.Remove(items);
                 }
             }
-                App.DB.SaveChanges();
-                Update();
-            
+            App.DB.SaveChanges();
+            Update();
+
         }
 
         private void BtCompl_Click(object sender, RoutedEventArgs e)
         {
+            if (contsOrd.ID == 0)
+            {
+                MessageBox.Show("Заказ ещё не создан");
+                return;
+            }
             IEnumerable<Order_Meal> products = App.DB.Order_Meal.Where(x => x.OrderID == contsOrd.ID).ToList();
             foreach (var items in products)
             {
@@ -183,7 +185,7 @@ namespace RestWaiter.Pages
             App.DB.SaveChanges();
             Update();
         }
-        public IEnumerable<Meal> meal = App.DB.Meal.Where(x=>x.RequestStatusID == 3).ToList();
+        public IEnumerable<Meal> meal = App.DB.Meal.Where(x => x.RequestStatusID == 3).ToList();
 
         private void Update2()
         {
@@ -246,8 +248,14 @@ namespace RestWaiter.Pages
                 MessageBox.Show("Выберете товар");
                 return;
             }
+            if (contsOrd.ID == 0)
+            {
+                MessageBox.Show("Заказ ещё не создан");
+                return;
+            }
             else
-            {   if (App.DB.Order_Meal.FirstOrDefault(x => x.Order.ID == contsOrd.ID && x.MealID == selectedclient.ID && x.StatusId == 1) == null)
+            {
+                if (App.DB.Order_Meal.FirstOrDefault(x => x.Order.ID == contsOrd.ID && x.MealID == selectedclient.ID && x.StatusId == 1) == null)
                 {
                     Order_Meal zakaz = new Order_Meal();
                     zakaz.MealID = selectedclient.ID;
@@ -272,14 +280,19 @@ namespace RestWaiter.Pages
                 contsOrd.StatusID = 1;
                 App.DB.SaveChanges();
                 Update();
-                }
-                
             }
+
+        }
 
         private void BtDiscount_Click(object sender, RoutedEventArgs e)
         {
             var code = App.DB.DiscountCode.FirstOrDefault(x => x.Code == TbCode.Text.Trim() && x.DataStart < DateTime.Now && x.DataEnd > DateTime.Now) as DiscountCode;
-            if(code != null && contsOrd.DiscountId == null)
+            if (contsOrd.ID == 0)
+            {
+                MessageBox.Show("Заказ ещё не создан");
+                return;
+            }
+            if (code != null && contsOrd.DiscountId == null)
             {
                 contsOrd.DiscountId = code.Id;
                 SpDiscount.Visibility = Visibility.Visible;
@@ -297,12 +310,33 @@ namespace RestWaiter.Pages
 
         private void BtCalculate_Click(object sender, RoutedEventArgs e)
         {
+            if (contsOrd.ID == 0)
+            {
+                MessageBox.Show("Заказ ещё не создан");
+                return;
+            }
             contsOrd.DataTimeEnd = DateTime.Now;
             contsOrd.StatusID = 6;
-            MessageBox.Show($"Стол {contsOrd.TableId} рассчитан.");
+            MessageBox.Show($"Заказ {contsOrd.ID} сформирован.");
             App.DB.SaveChanges();
             Update();
             Update2();
+            BtCreate.Visibility = Visibility.Visible;
+            Order order = new Order();
+            contsOrd = order;
+            Update();
+        }
+
+        private void BtCreate_Click(object sender, RoutedEventArgs e)
+        {
+            Order order = new Order();
+            order.DateTimesSt = DateTime.Now;
+            order.OptionsID = 2;
+            order.StatusID = 1;
+            App.DB.Order.Add(order);
+            App.DB.SaveChanges();
+            contsOrd = order;
+            BtCreate.Visibility = Visibility.Hidden;
         }
     }
-    }
+}
