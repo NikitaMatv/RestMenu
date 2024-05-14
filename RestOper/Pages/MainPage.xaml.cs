@@ -118,15 +118,7 @@ namespace RestOper.Pages
             {
                 contsOrd.StatusID = 3;
             }
-            if (contsOrd.Address.Length > 0 && contsOrd.Address != null)
-            {
-
-            }
-            else
-            {
-                MessageBox.Show("Заполните адрес.");
-                return;
-            }
+            
             App.DB.SaveChanges();
             TbTotalPrice.Text = $"Цена: {contsOrd.Price} руб.";
             if (contsOrd.DiscountId != null)
@@ -338,6 +330,15 @@ namespace RestOper.Pages
 
         private void BtCreate_Click(object sender, RoutedEventArgs e)
         {
+            if (contsOrd.Address != null && contsOrd.Address.Length > 0)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Заполните адрес.");
+                return;
+            }
             Order order = new Order();
             order.DateTimesSt = DateTime.Now;
             order.OptionsID = 2;
