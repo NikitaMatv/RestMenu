@@ -95,7 +95,6 @@ namespace RestOper.Pages
         {
             bool allcomplit = true;
             LbCart.ItemsSource = App.DB.Order_Meal.Where(x => x.OrderID == contsOrd.ID).ToList();
-
             int pri = 0;
             IEnumerable<Order_Meal> products = App.DB.Order_Meal.Where(x => x.OrderID == contsOrd.ID).ToList();
             foreach (var items in products)
@@ -118,6 +117,15 @@ namespace RestOper.Pages
             if (allcomplit == true)
             {
                 contsOrd.StatusID = 3;
+            }
+            if (contsOrd.Address.Length > 0 && contsOrd.Address != null)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Заполните адрес.");
+                return;
             }
             App.DB.SaveChanges();
             TbTotalPrice.Text = $"Цена: {contsOrd.Price} руб.";
@@ -322,6 +330,7 @@ namespace RestOper.Pages
             Update();
             Update2();
             BtCreate.Visibility = Visibility.Visible;
+            SpAddress.Visibility = Visibility.Collapsed;
             Order order = new Order();
             contsOrd = order;
             Update();
@@ -336,7 +345,22 @@ namespace RestOper.Pages
             App.DB.Order.Add(order);
             App.DB.SaveChanges();
             contsOrd = order;
-            BtCreate.Visibility = Visibility.Hidden;
+            BtCreate.Visibility = Visibility.Collapsed;
+            SpAddress.Visibility = Visibility.Visible;
+        }
+
+        private void BtSaveAddress_Click(object sender, RoutedEventArgs e)
+        {
+            if (TbAddres.Text.Trim().Length > 0)
+            {
+                contsOrd.Address = TbAddres.Text.Trim();
+            }
+            else
+            {
+                MessageBox.Show($"Заполните адрес.");
+                return;
+            }
+
         }
     }
 }

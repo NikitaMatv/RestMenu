@@ -22,6 +22,13 @@
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0">
                     <Button  Style="{StaticResource RoundButton}" VerticalAlignment="Center" Margin="0 10 0 0" Width="200" x:Name="BtCreate" Click="BtCreate_Click">Создать заказ</Button>
+                    <StackPanel Margin="0 5 0 0" x:Name="SpAddress" Visibility="Collapsed" VerticalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock FontSize="17" Margin="10 2 0 0">Адрес доставки:</TextBlock>
+                        <Border BorderBrush="Black" Margin="10 0 0 0" BorderThickness="2"  CornerRadius="20" Width="170" Height="30">
+                            <TextBox x:Name="TbAddres" BorderBrush="Transparent" Width="150" Text="{Binding Address}"></TextBox>
+                        </Border>
+                        <Button x:Name="BtSaveAddress"  Style="{StaticResource RoundButton}" Width="100" Height="30" Margin="10 0 0 0" Click="BtSaveAddress_Click">Сохранить</Button>
+                    </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Row="1">
                     <ListBox VerticalAlignment="Top"  Grid.ColumnSpan="2" Height="500" x:Name="LbCart" HorizontalContentAlignment="Stretch" AlternationCount="2">
