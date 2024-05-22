@@ -8,49 +8,56 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EmployeeDismissedPage">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60"/>
-            <ColumnDefinition Width="3"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid Background="Black" Grid.Column="1" Height="900" Margin="0 -100 0 0"></Grid>
-        <StackPanel Grid.Column="0" Orientation="Vertical">
-            <Button  Style="{StaticResource RoundButton}"  Height="45" Padding="10" Margin="3 20 3 0" ToolTip="Назад" x:Name="BtBack" Click="BtBack_Click">
-                <Button.Content>
-                    <Image Source="/Resources/backarrow.png"  Height="34"/>
-                </Button.Content>
+    <Grid Background="#D9D9D9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="5 2 0 0" HorizontalAlignment="Center"  Orientation="Horizontal" >
+            <Button Style="{StaticResource MyButtonStyle}"  x:Name="BtEmployees" BorderBrush="Transparent"  Height="45" Padding="10" Margin="3 0 3 0" Click="BtDismissed_Click" >
+                <TextBlock TextDecorations="Underline" FontStyle="Oblique" FontSize="20" FontFamily="Arial">Сотдрудники</TextBlock>
+            </Button>
+            <Button Style="{StaticResource MyButtonStyle}"  x:Name="BtDismissed" BorderBrush="Transparent" Height="45" Padding="10" Margin="3 0 3 0"    Click="BtEmployees_Click">
+                <TextBlock TextDecorations="Underline" FontStyle="Oblique" FontSize="20" FontFamily="Arial">Назад</TextBlock>
+            </Button>
+            <Image Source="/Resources/Logo.png" />
+            <Button Style="{StaticResource MyButtonStyle}"  x:Name="BtChief"  BorderBrush="Transparent" Height="45" Padding="10" Margin="3 0 3 0"   Click="BtChief_Click">
+                <TextBlock TextDecorations="Underline" FontStyle="Oblique" FontSize="20" FontFamily="Arial">Предложения шефа</TextBlock>
             </Button>
         </StackPanel>
-        <ListBox Grid.Column="2" VerticalAlignment="Top" x:Name="LBEmployee" Grid.Row="1" HorizontalContentAlignment="Stretch" AlternationCount="2" Height="587">
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal" Width="910"></WrapPanel>
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
+        <ListBox Grid.Row="1" VerticalAlignment="Top" x:Name="LBEmployee" Background="#686868"  HorizontalContentAlignment="Stretch" AlternationCount="2" Height="615">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border Background="Transparent" BorderBrush="Black" Width="200" Height="100" BorderThickness="2" CornerRadius="10">
+                    <Border Background="#D9D9D9" BorderBrush="Black" Width="700" Height="100" Margin="0 10 0 0" BorderThickness="2" CornerRadius="10">
                         <Border.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Востановить" x:Name="EmployeeFire" Click="EmployeeFire_Click"></MenuItem>
                             </ContextMenu>
                         </Border.ContextMenu>
-                        <StackPanel>
-                            <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left">
+                        <Grid Width="700" Margin="10 0 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel  Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
                                 <TextBlock Padding="3" FontSize="18" FontWeight="Bold" Text="{Binding EmployeeRole.Name}"></TextBlock>
-                                <StackPanel Margin="3" Orientation="Horizontal">
-                                    <TextBlock FontSize="12" FontWeight="Bold"  Text="Телефон: "></TextBlock>
-                                    <TextBlock  FontSize="14"  TextWrapping="Wrap" Width="370" Text="{Binding PhoneNumber}"></TextBlock>
-                                </StackPanel>
-                                <StackPanel Margin="3" Orientation="Horizontal">
-                                    <TextBlock FontSize="12" FontWeight="Bold"  Text="ФИО: "></TextBlock>
-                                    <TextBlock FontSize="12" Text="{Binding Name}" Margin="0 0 10 0"></TextBlock>
-                                    <TextBlock FontSize="12" Text="{Binding Surname}" Margin="0 0 10 0"></TextBlock>
-                                    <TextBlock FontSize="12" Text="{Binding Patronymic}" Margin="0 0 10 0"></TextBlock>
-                                </StackPanel>
+                                <TextBlock Padding="3 3 0 0" FontSize="18" Text="{Binding Name}" Margin="0 0 10 0"></TextBlock>
+                                <TextBlock Padding="0 3 0 0" FontSize="18" Text="{Binding Surname}" Margin="0 0 10 0"></TextBlock>
+                                <TextBlock Padding="0 3 0 0" FontSize="18" Text="{Binding Patronymic}" Margin="0 0 10 0"></TextBlock>
                             </StackPanel>
-                        </StackPanel>
+                            <StackPanel Margin="0 0 0 0" Grid.Column="1" Orientation="Horizontal">
+                                <TextBlock Padding="3" FontSize="18" FontWeight="Bold"  Text="Телефон: "></TextBlock>
+                                <TextBlock  Padding="3" FontSize="18"  TextWrapping="Wrap" Width="370" Text="{Binding PhoneNumber}"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Margin="3" Grid.Row="1" Orientation="Horizontal">
+                                <TextBlock Padding="3" FontSize="18" FontWeight="Bold"  Text="Email: "></TextBlock>
+                                <TextBlock Padding="3" FontSize="18" Text="{Binding Email}" Margin="0 0 10 0"></TextBlock>
+                            </StackPanel>
+                        </Grid>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>

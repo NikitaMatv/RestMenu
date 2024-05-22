@@ -30,6 +30,8 @@ namespace RestDeliv.Pages
             dispatcherTimer.Start();
             LbCart.ItemsSource = App.DB.Order.Where(x => x.StatusID == 3 && x.OptionsID == 2).ToList();
             LbDeliv.ItemsSource = App.DB.Order.Where(x => x.StatusID == 4 && x.OptionsID == 2).ToList();
+            LbCart.SelectedIndex = 0;
+            SpInf.DataContext = LbCart.SelectedItem as Order;
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
@@ -80,6 +82,12 @@ namespace RestDeliv.Pages
             App.DB.SaveChanges();
             LbCart.ItemsSource = App.DB.Order.Where(x => x.StatusID == 3 && x.OptionsID == 2).ToList();
             LbDeliv.ItemsSource = App.DB.Order.Where(x => x.StatusID == 4 && x.OptionsID == 2).ToList();
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var select = (sender as Border).DataContext as Order;
+            SpInf.DataContext = select;
         }
     }
 }

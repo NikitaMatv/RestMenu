@@ -9,6 +9,9 @@
       Title="MainPage">
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/imageBack.png"></ImageBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -17,24 +20,24 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"></RowDefinition>
-                    <RowDefinition Height="450"></RowDefinition>
+                    <RowDefinition Height="470"></RowDefinition>
                     <RowDefinition Height="150"></RowDefinition>
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0">
-                    <Button  Style="{StaticResource RoundButton}" VerticalAlignment="Center" Margin="0 10 0 0" Width="200" x:Name="BtCreate" Click="BtCreate_Click">Создать заказ</Button>
+                <StackPanel Grid.Row="0" Background="#D9D9D9" >
+                    <Button  Style="{StaticResource RoundButton}"  Background="White"  VerticalAlignment="Center" Margin="0 10 0 0" Width="200" x:Name="BtCreate" Click="BtCreate_Click">Создать заказ</Button>
                     <StackPanel Margin="0 5 0 0" x:Name="SpAddress" Visibility="Collapsed" VerticalAlignment="Center" Orientation="Horizontal">
                         <TextBlock FontSize="17" Margin="10 2 0 0">Адрес доставки:</TextBlock>
                         <Border BorderBrush="Black" Margin="10 0 0 0" BorderThickness="2"  CornerRadius="20" Width="170" Height="30">
-                            <TextBox x:Name="TbAddres" BorderBrush="Transparent" Width="150" Text="{Binding Address}"></TextBox>
+                            <TextBox x:Name="TbAddres" BorderBrush="Transparent" Background="Transparent" FontSize="18" Width="150" Text="{Binding Address}"></TextBox>
                         </Border>
-                        <Button x:Name="BtSaveAddress"  Style="{StaticResource RoundButton}" Width="100" Height="30" Margin="10 0 0 0" Click="BtSaveAddress_Click">Сохранить</Button>
+                        <Button x:Name="BtSaveAddress"  Style="{StaticResource RoundButton}" Background="White" Width="100" Height="30" Margin="10 0 0 0" Click="BtSaveAddress_Click">Сохранить</Button>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Row="1">
-                    <ListBox VerticalAlignment="Top"  Grid.ColumnSpan="2" Height="500" x:Name="LbCart" HorizontalContentAlignment="Stretch" AlternationCount="2">
+                    <ListBox VerticalAlignment="Top"  Grid.ColumnSpan="2"  Height="470" x:Name="LbCart" HorizontalContentAlignment="Stretch" AlternationCount="2">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Grid >
+                                <Grid>
                                     <Grid.Resources>
                                         <Style TargetType="{x:Type Button}">
                                             <Setter Property="FontFamily" Value="Arial"/>
@@ -130,11 +133,11 @@
         <StackPanel Grid.Column="1">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="45"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0" Margin="10 0 0 0" Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="Поиск: " FontWeight="Bold" FontSize="20" Margin="0 6 0 0"></TextBlock>
+                <StackPanel Grid.Row="0" Margin="0 0 0 0" Orientation="Horizontal" VerticalAlignment="Center" Background="#D9D9D9">
+                    <TextBlock Text="Поиск: " FontWeight="Bold" FontSize="20" Margin="10 6 0 0"></TextBlock>
                     <Border CornerRadius="20" Background="Transparent" Height="35" BorderBrush="Black" BorderThickness="2" Opacity="0.6" >
                         <TextBox Opacity="0.6"  Background="Transparent" x:Name="TbSearch" TextChanged="TbSearch_TextChanged" BorderBrush="Transparent" BorderThickness="0" Padding="10 -5 10 0" VerticalContentAlignment="Center" FontSize="25"  Width="90" Height="25" ></TextBox>
                     </Border>
@@ -145,7 +148,7 @@
                     <Image Margin="5 0 0 0" Source="/Resources/Drinks.png" ToolTip="Напиток" x:Name="BtDrinks" MouseDown="BtDrinks_MouseDown"/>
                     <Image Margin="5 0 0 0" Source="/Resources/ThrowOffs.png" ToolTip="Сбросить филтр" x:Name="BtAll" MouseDown="BtAll_MouseDown"/>
                 </StackPanel>
-                <ListBox VerticalAlignment="Top" x:Name="LBMeal" Grid.Row="1" HorizontalContentAlignment="Stretch" AlternationCount="2" Height="587">
+                <ListBox VerticalAlignment="Top" x:Name="LBMeal" Grid.Row="1" Background="Transparent" HorizontalContentAlignment="Stretch" AlternationCount="2" Height="620" BorderBrush="Transparent">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal" Width="470"></WrapPanel>
@@ -153,15 +156,15 @@
                     </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Border Background="Transparent" BorderBrush="Black" Width="220" Height="250" BorderThickness="2" CornerRadius="10">
+                            <Border Background="#D9D9D9" BorderBrush="Black" Width="220" Height="250" BorderThickness="2" CornerRadius="20">
                                 <Border.ContextMenu>
                                     <ContextMenu>
                                         <MenuItem Header="Добавить к заказу" x:Name="BtAdd" Click="BtAdd_Click"></MenuItem>
                                     </ContextMenu>
                                 </Border.ContextMenu>
                                 <StackPanel>
-                                    <Border BorderBrush="Gray" BorderThickness="2"  CornerRadius="20" Width="220" Height="80">
-                                        <Image Source="{Binding Images}" Width="220" Height="80" Stretch="Uniform"></Image>
+                                    <Border BorderBrush="Black" BorderThickness="2" Background="White"  CornerRadius="20" Width="220" Height="80">
+                                        <Image Source="{Binding Images}"  Width="220" Height="80" Stretch="Uniform"></Image>
                                     </Border>
                                     <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left">
                                         <TextBlock Padding="3" FontSize="18" FontWeight="Bold" Text="{Binding Name}"></TextBlock>

@@ -28,25 +28,25 @@ namespace RestHostes.Pages
         }
         private void AutorBt_Click(object sender, RoutedEventArgs e)
         {
-            //var employee = App.DB.Employee.FirstOrDefault(Cus => Cus.Login == LoginTb.Text);
-            //if (employee == null)
-            //{
-            //    LoginTb.Text = string.Empty;
-            //    PasswordTb.Password = string.Empty;
-            //    MessageBox.Show("Логин или пароль неверный");
-            //    return;
-            //}
-            //if (employee.RoleID != 7)
-            //{
-            //    MessageBox.Show("У вас нету доступа к этому приложению. \n Приложение только для Шев повара!");
-            //    return;
-            //}
-            //if (employee.Password != PasswordTb.Password)
-            //{
-            //    MessageBox.Show("Логин или пароль неверный");
-            //    return;
-            //}
-            //App.LoggedEmployee = employee;
+            var employee = App.DB.Employee.FirstOrDefault(Cus => Cus.Login == LoginTb.Text);
+            if (employee == null)
+            {
+                LoginTb.Text = string.Empty;
+                PasswordTb.Password = string.Empty;
+                MessageBox.Show("Логин или пароль неверный");
+                return;
+            }
+            if (employee.RoleID != 7)
+            {
+                MessageBox.Show("У вас нету доступа к этому приложению. \n Приложение только для Шев повара!");
+                return;
+            }
+            if (employee.Password != PasswordTb.Password)
+            {
+                MessageBox.Show("Логин или пароль неверный");
+                return;
+            }
+            App.LoggedEmployee = employee;
             NavigationService.Navigate(new ListTablesPage());
         }
     }

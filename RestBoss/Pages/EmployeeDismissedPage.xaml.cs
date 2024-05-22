@@ -38,12 +38,20 @@ namespace RestBoss.Pages
             SelectedEmployee.IsDismissed = false;
             App.DB.SaveChanges();
             LBEmployee.ItemsSource = App.DB.Employee.Where(x => x.IsDismissed == true).ToList();
+        } 
+        private void BtChief_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ChiefRequestPage());
         }
-    
 
-        private void BtBack_Click(object sender, RoutedEventArgs e)
+        private void BtEmployees_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new MainPage());
+        }
+
+        private void BtDismissed_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EmployeesPage());
         }
     }
 }

@@ -237,6 +237,16 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\backarrow.png" />
+    <Resource Include="Resources\Group10.png" />
+    <Resource Include="Resources\Group6.png" />
+    <Resource Include="Resources\imageBack.png" />
+    <Resource Include="Resources\Line3.png" />
+    <Resource Include="Resources\Logo.png" />
+    <Resource Include="Resources\Table6.png" />
+    <Resource Include="Resources\Tables4.png" />
+    <Resource Include="Resources\LoginBack.png" />
+    <Resource Include="Resources\Group 6.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

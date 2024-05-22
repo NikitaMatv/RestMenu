@@ -54,9 +54,20 @@ namespace RestBoss.Pages
             NavigationService.Navigate(new EmployeeEditPage(new Employee()));
         }
 
-        private void BtBack_Click(object sender, RoutedEventArgs e)
+        private void BtChief_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ChiefRequestPage());
+        }
+
+        private void BtEmployees_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new MainPage());
         }
+
+        private void BtDismissed_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EmployeeDismissedPage());
+        }
+
     }
 }

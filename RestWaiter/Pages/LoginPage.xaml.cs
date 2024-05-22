@@ -46,7 +46,6 @@ namespace RestWaiter.Pages
                 return;
             }
             App.LoggedEmployee = employee;
-            //NavigationService.Navigate(new MainMenuPage());
             NavigationService.Navigate(new CartPage());
         }
     }

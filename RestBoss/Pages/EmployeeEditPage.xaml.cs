@@ -38,6 +38,7 @@ namespace RestBoss.Pages
                 App.DB.Employee.Add(EmployeeContext);
             }
             App.DB.SaveChanges();
+            NavigationService.Navigate(new MainPage());
 
         }
 

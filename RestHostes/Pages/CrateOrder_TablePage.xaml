@@ -9,6 +9,9 @@
       Title="CrateOrder_TablePage">
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/imageBack.png"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -17,7 +20,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border Grid.Column="0" Grid.Row="0" BorderBrush="Black" BorderThickness="3" CornerRadius="10" Width="300" Height="350"  VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Border Grid.Column="0" Grid.Row="0" Background="#D9D9D9" BorderBrush="Black" BorderThickness="3" CornerRadius="10" Width="300" Height="350"  VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel VerticalAlignment="Center">
                 <Image Source="{Binding Images}" Width="200" Height="200"></Image>
                 <TextBlock FontSize="18" Text="{Binding Id ,StringFormat='Номер стола {0}'}" TextAlignment="Center"></TextBlock>
@@ -33,14 +36,17 @@
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
                 <TextBlock Text="Поиск: " FontWeight="Bold" FontSize="20" Margin="0 6 0 0"></TextBlock>
-                <Border CornerRadius="20" Background="Transparent" Height="35" BorderBrush="Black" BorderThickness="2" Opacity="0.6" >
-                    <TextBox Opacity="0.6"  Background="Transparent" x:Name="TbSearch" TextChanged="TbSearch_TextChanged" BorderBrush="Transparent" BorderThickness="0" Padding="10 -5 10 0" VerticalContentAlignment="Center" FontSize="25"  Width="200" Height="25" ></TextBox>
+                <Border CornerRadius="20" Height="35" BorderBrush="Black" BorderThickness="2"  >
+                    <Border.Background>
+                        <SolidColorBrush Color="White" Opacity="0.6"/>
+                    </Border.Background>
+                    <TextBox Background="Transparent" x:Name="TbSearch" TextChanged="TbSearch_TextChanged" BorderBrush="Transparent" BorderThickness="0" Padding="10 -5 10 0" VerticalContentAlignment="Center" FontSize="25"  Width="200" Height="25" ></TextBox>
                 </Border>
             </StackPanel>
-            <ListBox VerticalAlignment="Top" x:Name="LbCustomer" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" HorizontalContentAlignment="Stretch" AlternationCount="2" Height="175" Width="400">
+            <ListBox VerticalAlignment="Top" Background="Transparent"  BorderBrush="Transparent" x:Name="LbCustomer" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" HorizontalContentAlignment="Stretch" AlternationCount="2" Height="250" Width="400">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border Background="Transparent" BorderBrush="Black" Width="390" Height="100" BorderThickness="2" CornerRadius="10">
+                        <Border  Background="#D9D9D9" BorderBrush="Black" Width="390" Height="100" BorderThickness="2" CornerRadius="10">
                             <Border.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Выбрать клиента" x:Name="BtAddInOrder" Click="BtAddInOrder_Click"></MenuItem>
@@ -57,35 +63,38 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <StackPanel x:Name="SpCustomer" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel>
-                    <TextBlock>Имя</TextBlock>
-                    <Border CornerRadius="20" Background="Transparent" BorderBrush="Black" BorderThickness="2" Opacity="0.6" >
-                        <TextBox x:Name="TbNames" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="10 0 10 0" Text="{Binding FirstName}"></TextBox>
-                    </Border>
-                    <TextBlock>Фамилия</TextBlock>
-                    <Border CornerRadius="20" Background="Transparent" BorderBrush="Black" BorderThickness="2" Opacity="0.6" >
-                        <TextBox  x:Name="TbSNames"  Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="10 0 10 0" Text="{Binding SurName}"></TextBox>
-                    </Border>
-                    <TextBlock>Номер телефона</TextBlock>
-                    <Border CornerRadius="20" Background="Transparent" BorderBrush="Black" BorderThickness="2" Opacity="0.6" >
-                        <TextBox x:Name="TbPhone"  Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="10 0 10 0" Text="{Binding PhoneNumber}"></TextBox>
-                    </Border>
-                    
-                  
+            <Border Background="#D9D9D9" Grid.Row="2" CornerRadius="20" Width="300" Height="250">
+                <StackPanel x:Name="SpCustomer" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel>
+                        <TextBlock>Имя</TextBlock>
+                        <Border CornerRadius="20" Background="Transparent" BorderBrush="Black" BorderThickness="2" Opacity="0.6" >
+                            <TextBox x:Name="TbNames" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="10 0 10 0" Text="{Binding FirstName}"></TextBox>
+                        </Border>
+                        <TextBlock>Фамилия</TextBlock>
+                        <Border CornerRadius="20" Background="Transparent" BorderBrush="Black" BorderThickness="2" Opacity="0.6" >
+                            <TextBox  x:Name="TbSNames"  Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="10 0 10 0" Text="{Binding SurName}"></TextBox>
+                        </Border>
+                        <TextBlock>Номер телефона</TextBlock>
+                        <Border CornerRadius="20" Background="Transparent" BorderBrush="Black" BorderThickness="2" Opacity="0.6" >
+                            <TextBox x:Name="TbPhone"  Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="10 0 10 0" Text="{Binding PhoneNumber}"></TextBox>
+                        </Border>
+
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Margin="0 15 0 0" FontWeight="ExtraBold" Foreground="Black" FontSize="10" x:Name="BtAdd"  Style="{StaticResource RoundButton}" Click="BtAdd_Click" Height="30" Width="80">Добавить</Button>
+                        <Button Margin="10 15 0 0" FontWeight="ExtraBold" Foreground="Black" FontSize="10" x:Name="BtCleat"  Style="{StaticResource RoundButton}" Click="BtCleat_Click" Height="30" Width="80">Очистить</Button>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Button Margin="0 15 0 0" FontWeight="ExtraBold" Foreground="Black" FontSize="10" x:Name="BtAdd"  Style="{StaticResource RoundButton}" Click="BtAdd_Click" Height="30" Width="80">Добавить</Button>
-                    <Button Margin="10 15 0 0" FontWeight="ExtraBold" Foreground="Black" FontSize="10" x:Name="BtCleat"  Style="{StaticResource RoundButton}" Click="BtCleat_Click" Height="30" Width="80">Очистить</Button>
-                </StackPanel>
-           </StackPanel>
-            
+            </Border>
+
+
         </Grid>
         <StackPanel Grid.Column="0" Grid.Row="1">
-            <Button Margin="10 10 0 0" FontWeight="ExtraBold" Foreground="Black" FontSize="10" x:Name="BtCreate"  Style="{StaticResource RoundButton}" Click="BtCreate_Click" Height="30" Width="80">Выбрать</Button>
+            <Button Margin="10 10 0 0" FontWeight="ExtraBold" Background="#D9D9D9" Foreground="Black" FontSize="10" x:Name="BtCreate"  Style="{StaticResource RoundButton}" Click="BtCreate_Click" Height="30" Width="80">Выбрать</Button>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
-            <Button Margin="10 10 0 0" FontWeight="ExtraBold" Foreground="Black" FontSize="10" x:Name="BtCansle"  Style="{StaticResource RoundButton}" Click="BtCansle_Click" Height="30" Width="80">Отменить</Button>
+            <Button Margin="10 10 0 0" FontWeight="ExtraBold" Background="#D9D9D9" Foreground="Black" FontSize="10" x:Name="BtCansle"  Style="{StaticResource RoundButton}" Click="BtCansle_Click" Height="30" Width="80">Отменить</Button>
         </StackPanel>
     </Grid>
 </Page>

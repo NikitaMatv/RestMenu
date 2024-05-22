@@ -24,29 +24,24 @@ namespace RestShev.Pages
         public MainMenuPage()
         {
             InitializeComponent();
+            MemuFame.NavigationService.Navigate(new OrderPage());
+        }
+
+
+
+        private void BtMenu_Click_1(object sender, RoutedEventArgs e)
+        {
             MemuFame.NavigationService.Navigate(new MenuPage());
         }
 
-        private void BtHistory_Click(object sender, RoutedEventArgs e)
+        private void BtOrder_Click(object sender, RoutedEventArgs e)
         {
             MemuFame.NavigationService.Navigate(new OrderPage());
         }
 
-        private void BtExit_Click(object sender, RoutedEventArgs e)
-        {
-            App.IsAutorizate = false;
-            App.LoggedEmployee = null;
-            NavigationService.Navigate(new LoginPage());
-        }
-
-        private void BtCart_Click(object sender, RoutedEventArgs e)
+        private void BtChief_Click(object sender, RoutedEventArgs e)
         {
             MemuFame.NavigationService.Navigate(new RequestPage());
-        }
-
-        private void BtMenu_Click(object sender, RoutedEventArgs e)
-        {
-            MemuFame.NavigationService.Navigate(new MenuPage());
         }
     }
 }

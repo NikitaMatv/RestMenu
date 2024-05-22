@@ -11,13 +11,13 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush Stretch="Fill"  AlignmentY="Top" AlignmentX="Center" ImageSource="/Recources/Backgraund.jpg" />
+            <ImageBrush Stretch="Fill"  AlignmentY="Top" AlignmentX="Center" ImageSource="/Recources/imageBack.png" />
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <ListBox VerticalAlignment="Top" Background="Transparent" Grid.ColumnSpan="2" Height="600"  x:Name="LbCart" HorizontalContentAlignment="Stretch" AlternationCount="2">
+        <ListBox VerticalAlignment="Top" Background="Transparent" Grid.ColumnSpan="2" Height="660" BorderBrush="Transparent"  x:Name="LbCart" HorizontalContentAlignment="Stretch" AlternationCount="2">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" Width="910"></WrapPanel>
@@ -25,7 +25,7 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border Background="White" BorderThickness="2" Width="410" BorderBrush="Black">
+                    <Border Background="#D9D9D9" BorderThickness="2" Width="410" BorderBrush="Black">
                         <Border.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Рецепт" x:Name="BtDetails" Click="BtDetails_Click"></MenuItem>

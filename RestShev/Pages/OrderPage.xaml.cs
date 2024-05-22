@@ -72,5 +72,10 @@ namespace RestShev.Pages
             App.DB.SaveChanges();
             LbCart.ItemsSource = App.DB.Order_Meal.Where(x => x.StatusId == 2).ToList();
         }
+
+        private void BtMenu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

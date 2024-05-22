@@ -8,30 +8,33 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ChiefRequest">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60"/>
-            <ColumnDefinition Width="3"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid Background="Black" Grid.Column="1" Height="900" Margin="0 -100 0 0"></Grid>
-        <StackPanel Grid.Column="0" Orientation="Vertical">
-            <Button  Style="{StaticResource RoundButton}"  Height="45" Padding="10" Margin="3 20 3 0" ToolTip="Назад" x:Name="BtBack" Click="BtBack_Click">
-                <Button.Content>
-                    <Image Source="/Resources/backarrow.png"  Height="34"/>
-                </Button.Content>
+    <Grid Background="#D9D9D9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="-330 2 0 0" HorizontalAlignment="Center"  Orientation="Horizontal" >
+            <Button Style="{StaticResource MyButtonStyle}"  x:Name="BtEmployees" BorderBrush="Transparent"  Height="45" Padding="10" Margin="3 0 3 0" Click="BtDismissed_Click" >
+                <TextBlock TextDecorations="Underline" FontStyle="Oblique" FontSize="20" FontFamily="Arial">Сотдрудники</TextBlock>
+            </Button>
+            <Button Style="{StaticResource MyButtonStyle}"  x:Name="BtDismissed" BorderBrush="Transparent" Height="45" Padding="10" Margin="3 0 3 0"    Click="BtEmployees_Click">
+                <TextBlock TextDecorations="Underline" FontStyle="Oblique" FontSize="20" FontFamily="Arial">Востановление сотрудников</TextBlock>
+            </Button>
+            <Image Source="/Resources/Logo.png" />
+            <Button Style="{StaticResource MyButtonStyle}"  x:Name="BtChief"  BorderBrush="Transparent" Height="45" Padding="10" Margin="3 0 3 0"   Click="BtChief_Click">
+                <TextBlock TextDecorations="Underline" FontStyle="Oblique" FontSize="20" FontFamily="Arial">Назад</TextBlock>
             </Button>
         </StackPanel>
-        <StackPanel Grid.Column="2" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <ListBox VerticalAlignment="Top" x:Name="LBMealAdd" Grid.Row="1" HorizontalContentAlignment="Stretch" AlternationCount="2" Height="587">
+        <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <ListBox VerticalAlignment="Top" x:Name="LBMealAdd"  Grid.Row="1" Background="#686868" HorizontalContentAlignment="Stretch" AlternationCount="2" Width="1000" Height="615">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" Width="910"></WrapPanel>
+                        <WrapPanel Orientation="Horizontal" Width="980"></WrapPanel>
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border Background="Transparent" BorderBrush="Black" Width="440" Height="500" BorderThickness="2" CornerRadius="10">
+                        <Border Background="#D9D9D9" BorderBrush="Black" Width="440" Height="500" BorderThickness="2" CornerRadius="20">
                             <Border.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Одобрить для меню" x:Name="MenuAdd" Click="MenuAdd_Click"></MenuItem>
@@ -39,8 +42,8 @@
                                 </ContextMenu>
                             </Border.ContextMenu>
                             <StackPanel>
-                                <Border BorderBrush="Gray" BorderThickness="2"  CornerRadius="20" Width="440" Height="300">
-                                    <Image Source="{Binding Images}" Width="440" Height="300" Stretch="Uniform"></Image>
+                                <Border BorderBrush="Black" BorderThickness="2"  CornerRadius="20" Width="440" Height="300" Padding="10" Background="White">
+                                    <Image Source="{Binding Images}" Stretch="Uniform"></Image>
                                 </Border>
                                 <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left">
                                     <TextBlock Padding="3" FontSize="18" FontWeight="Bold" Text="{Binding Name}"></TextBlock>

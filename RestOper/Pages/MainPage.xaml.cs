@@ -315,6 +315,11 @@ namespace RestOper.Pages
                 MessageBox.Show("Заказ ещё не создан");
                 return;
             }
+            if (contsOrd.Address == null || contsOrd.Address == string.Empty)
+            {
+                MessageBox.Show("Адрес ещё не заполнен");
+                return;
+            }
             contsOrd.DataTimeEnd = DateTime.Now;
             contsOrd.StatusID = 6;
             MessageBox.Show($"Заказ {contsOrd.ID} сформирован.");
@@ -329,16 +334,7 @@ namespace RestOper.Pages
         }
 
         private void BtCreate_Click(object sender, RoutedEventArgs e)
-        {
-            if (contsOrd.Address != null && contsOrd.Address.Length > 0)
-            {
-
-            }
-            else
-            {
-                MessageBox.Show("Заполните адрес.");
-                return;
-            }
+        {        
             Order order = new Order();
             order.DateTimesSt = DateTime.Now;
             order.OptionsID = 2;

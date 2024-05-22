@@ -45,9 +45,19 @@ namespace RestBoss.Pages
             LBMealAdd.ItemsSource = App.DB.Meal.Where(m => m.RequestStatusID == 1 || m.RequestStatusID == 2).ToList();
         }
 
-        private void BtBack_Click(object sender, RoutedEventArgs e)
+        private void BtChief_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new MainPage());
+        }
+
+        private void BtEmployees_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EmployeeDismissedPage());
+        }
+
+        private void BtDismissed_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EmployeesPage());
         }
     }
 }

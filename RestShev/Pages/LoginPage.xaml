@@ -10,23 +10,12 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush Stretch="Fill"  AlignmentY="Top" AlignmentX="Center" ImageSource="/Resources/Backgraund.jpg" />
+            <ImageBrush Stretch="Fill"  AlignmentY="Top" AlignmentX="Center" ImageSource="/Resources/Group6.png" />
         </Grid.Background>
-        <Border Background="White" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="2" Height="420" Width="310" CornerRadius="50">
-            <StackPanel>
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="20">
-                    <TextBlock HorizontalAlignment="Center" FontSize="25" Margin="0 10 0 0">Авторизация</TextBlock>
-                    <TextBlock Margin="0 40 0 0" FontWeight="ExtraBold" FontSize="12" Foreground="Black" >Логин</TextBlock>
-                    <Border CornerRadius="20" Background="Transparent" BorderBrush="Black" BorderThickness="2" Opacity="0.6" >
-                        <TextBox Opacity="0.6"  Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Padding="20 0 0 0" VerticalContentAlignment="Center" FontSize="25" x:Name="LoginTb" Width="250" Height="40" ></TextBox>
-                    </Border>
-                    <TextBlock FontWeight="ExtraBold" FontSize="12" Foreground="Black" Margin="0 20 0 0">Пароль</TextBlock>
-                    <Border CornerRadius="20" Background="Transparent" BorderBrush="Black" BorderThickness="2" Opacity="0.6" >
-                        <PasswordBox  Opacity="0.6"  x:Name="PasswordTb" BorderBrush="Transparent" BorderThickness="0" Padding="20 0 0 0" FontSize="25" Width="250" Height="40"></PasswordBox>
-                    </Border>
-                    <Button Margin="0 70 0 0" FontWeight="ExtraBold" Foreground="Black" FontSize="12" x:Name="AutorBt"  Style="{StaticResource RoundButton}" Click="AutorBt_Click" Height="40" Width="180">Войти</Button>
-              </StackPanel>
-            </StackPanel>
-        </Border>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="0 -42 40 0">
+            <TextBox Opacity="0.6"  Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="0 -120 0 0" VerticalContentAlignment="Center" FontSize="25" x:Name="LoginTb" Width="240" Height="40" ></TextBox>
+            <PasswordBox  Opacity="0.6"  x:Name="PasswordTb" BorderBrush="Transparent" BorderThickness="0"  Margin="-50 45 0 0"  FontSize="25" Width="220" Height="40"></PasswordBox>
+        </StackPanel>
+        <Button Margin="350 200 0 0" FontWeight="ExtraBold" Foreground="Black" Background="White" FontSize="12" x:Name="AutorBt"  Style="{StaticResource RoundButton}" Click="AutorBt_Click" Height="40" Width="180">Войти</Button>
     </Grid>
 </Page>

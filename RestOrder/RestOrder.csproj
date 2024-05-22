@@ -207,6 +207,15 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Recources\backarrow.png" />
+    <Resource Include="Recources\Group10.png" />
+    <Resource Include="Recources\Group6.png" />
+    <Resource Include="Recources\imageBack.png" />
+    <Resource Include="Recources\Line3.png" />
+    <Resource Include="Recources\LoginBack.png" />
+    <Resource Include="Recources\Logo.png" />
+    <Resource Include="Recources\Table6.png" />
+    <Resource Include="Recources\Tables4.png" />
     <Resource Include="Recources\Backgraund.jpg" />
     <Resource Include="Recources\Basket.png" />
     <Resource Include="Recources\cart.png" />
