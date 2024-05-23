@@ -14,10 +14,10 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Margin="-200 2 0 0" HorizontalAlignment="Center"  Orientation="Horizontal" >
-            <Button Style="{StaticResource MyButtonStyle}"  x:Name="BtEmployees" BorderBrush="Transparent"  Height="45" Padding="10" Margin="3 0 3 0" Click="BtDismissed_Click" >
+            <Button Style="{StaticResource MyButtonStyle}"  x:Name="BtEmployees" BorderBrush="Transparent"  Height="45" Padding="10" Margin="3 0 3 0" Click="BtEmployees_Click" >
                 <TextBlock TextDecorations="Underline" FontStyle="Oblique" FontSize="20" FontFamily="Arial">Сотдрудники</TextBlock>
             </Button>
-            <Button Style="{StaticResource MyButtonStyle}"  x:Name="BtDismissed" BorderBrush="Transparent" Height="45" Padding="10" Margin="3 0 3 0"    Click="BtEmployees_Click">
+            <Button Style="{StaticResource MyButtonStyle}"  x:Name="BtDismissed" BorderBrush="Transparent" Height="45" Padding="10" Margin="3 0 3 0"    Click="BtDismissed_Click">
                 <TextBlock TextDecorations="Underline" FontStyle="Oblique" FontSize="20" FontFamily="Arial">Востановление сотрудников</TextBlock>
             </Button>
             <Image Source="/Resources/Logo.png" />
