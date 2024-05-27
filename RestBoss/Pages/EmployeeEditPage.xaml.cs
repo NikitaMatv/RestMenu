@@ -33,13 +33,15 @@ namespace RestBoss.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (EmployeeContext.ID == 0)
+            if(EmployeeContext.Login != string.Empty && EmployeeContext.Password != string.Empty && EmployeeContext.Name != string.Empty && EmployeeContext.Surname != string.Empty)
             {
-                App.DB.Employee.Add(EmployeeContext);
+                if (EmployeeContext.ID == 0)
+                {
+                    App.DB.Employee.Add(EmployeeContext);
+                }
+                App.DB.SaveChanges();
+                NavigationService.Navigate(new MainPage());
             }
-            App.DB.SaveChanges();
-            NavigationService.Navigate(new MainPage());
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

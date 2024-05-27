@@ -68,15 +68,15 @@
                     <StackPanel>
                         <TextBlock>Имя</TextBlock>
                         <Border CornerRadius="20" Background="Transparent" BorderBrush="Black" BorderThickness="2" Opacity="0.6" >
-                            <TextBox x:Name="TbNames" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="10 0 10 0" Text="{Binding FirstName}"></TextBox>
+                            <TextBox x:Name="TbNames" MaxLength="40"  Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="10 0 10 0" Text="{Binding FirstName}"></TextBox>
                         </Border>
                         <TextBlock>Фамилия</TextBlock>
                         <Border CornerRadius="20" Background="Transparent" BorderBrush="Black" BorderThickness="2" Opacity="0.6" >
-                            <TextBox  x:Name="TbSNames"  Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="10 0 10 0" Text="{Binding SurName}"></TextBox>
+                            <TextBox  x:Name="TbSNames" MaxLength="40"   Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="10 0 10 0" Text="{Binding SurName}"></TextBox>
                         </Border>
                         <TextBlock>Номер телефона</TextBlock>
                         <Border CornerRadius="20" Background="Transparent" BorderBrush="Black" BorderThickness="2" Opacity="0.6" >
-                            <TextBox x:Name="TbPhone"  Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="10 0 10 0" Text="{Binding PhoneNumber}"></TextBox>
+                            <TextBox x:Name="TbPhone"  MaxLength="11"  Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="10 0 10 0" Text="{Binding PhoneNumber}"></TextBox>
                         </Border>
 
 

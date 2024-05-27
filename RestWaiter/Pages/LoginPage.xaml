@@ -13,8 +13,8 @@
             <ImageBrush Stretch="Fill"  AlignmentY="Top" AlignmentX="Center" ImageSource="/Resources/Group6.png" />
         </Grid.Background>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="0 -42 40 0">
-            <TextBox Opacity="0.6"  Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="0 -120 0 0" VerticalContentAlignment="Center" FontSize="25" x:Name="LoginTb" Width="240" Height="40" ></TextBox>
-            <PasswordBox  Opacity="0.6"  x:Name="PasswordTb" BorderBrush="Transparent" BorderThickness="0"  Margin="-50 45 0 0"  FontSize="25" Width="220" Height="40"></PasswordBox>
+            <TextBox Opacity="0.6"  Background="Transparent" BorderBrush="Transparent" MaxLength="40"  BorderThickness="0" Margin="0 -120 0 0" VerticalContentAlignment="Center" FontSize="25" x:Name="LoginTb" Width="240" Height="40" ></TextBox>
+            <PasswordBox  Opacity="0.6"  x:Name="PasswordTb" BorderBrush="Transparent" MaxLength="40"  BorderThickness="0"  Margin="-50 45 0 0"  FontSize="25" Width="220" Height="40"></PasswordBox>
         </StackPanel>
         <Button Margin="350 200 0 0" FontWeight="ExtraBold" Foreground="Black" Background="White" FontSize="12" x:Name="AutorBt"  Style="{StaticResource RoundButton}" Click="AutorBt_Click" Height="40" Width="180">Войти</Button>
     </Grid>
